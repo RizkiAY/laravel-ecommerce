@@ -8,9 +8,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ProductController::class, 'index'])
+    ->name('home');
+
+Route::get('/produk', [ProductController::class, 'index'])
+    ->name('products.index');
 
 // Pengelolaan produk khusus admin
 Route::middleware(['auth', 'admin'])->group(function () {
