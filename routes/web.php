@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/keranjang/update/{product}', [CartController::class, 'update']);
     Route::get('/checkout', [CartController::class, 'checkout']);
     Route::post('/checkout', [CartController::class, 'processCheckout']);
+    
+    Route::get('/invoice', [CartController::class, 'invoice'])
+        ->name('invoice');
 });
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');

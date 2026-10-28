@@ -94,13 +94,22 @@
         }
 
         .admin-menu a {
-            display: block;
+            display: flex;
+            align-items: center;
+            gap: 12px;
             padding: 13px 12px;
             border-radius: 8px;
             color: #cbd5e1;
             text-decoration: none;
             font-size: 14px;
             transition: background 0.2s ease;
+        }
+
+        .admin-menu a svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
         }
 
         .admin-menu a:hover,
@@ -133,6 +142,34 @@
 
         .admin-logout:hover {
             background: #1e293b;
+        }
+
+        .admin-logout-button {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+            padding: 13px 12px;
+            border: 1px solid #29323f;
+            border-radius: 8px;
+            background: transparent;
+            color: #cbd5e1;
+            font-size: 14px;
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .admin-logout-button svg {
+            display: block;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+        }
+
+        .admin-logout-button:hover {
+            background: #d81d5b;
+            color: #ffffff;
         }
 
         /* KONTEN UTAMA */
@@ -170,7 +207,8 @@
             color: var(--text-main);
             border: 1px solid var(--border-color);
             border-radius: 10px;
-            font-size: 13px;
+            font-size: 13px;    
+            font-weight: 700;
         }
 
         .admin-alert {
@@ -474,36 +512,87 @@
             <div class="admin-menu-label">MENU UTAMA</div>
 
             <nav class="admin-menu">
+                {{-- Dashboard --}}
                 <a href="/admin/dashboard"
-                   class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
-                    ▦ &nbsp; Dashboard
+                class="{{ request()->is('admin/dashboard') ? 'active' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                        <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                        <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                        <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                    </svg>
+                    <span>Dashboard</span>
                 </a>
 
+                {{-- Produk --}}
                 <a href="/produk"
-                   class="{{ request()->is('produk') || request()->is('produk/*') ? 'active' : '' }}">
-                    ◈ &nbsp; Produk
+                class="{{ request()->is('produk') || request()->is('produk/*') ? 'active' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="m12 3 9 5-9 5-9-5 9-5Z"/>
+                        <path d="m3 12 9 5 9-5"/>
+                        <path d="m3 16 9 5 9-5"/>
+                    </svg>
+                    <span>Produk</span>
                 </a>
 
+                {{-- Kategori --}}
                 <a href="/kategori"
-                   class="{{ request()->is('kategori') || request()->is('kategori/*') ? 'active' : '' }}">
-                    ▤ &nbsp; Kategori
+                class="{{ request()->is('kategori') || request()->is('kategori/*') ? 'active' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <rect x="3" y="4" width="18" height="6" rx="1.5"/>
+                        <rect x="3" y="14" width="18" height="6" rx="1.5"/>
+                    </svg>
+                    <span>Kategori</span>
                 </a>
 
+                {{-- Pesanan --}}
                 <a href="/pesanan"
-                   class="{{ request()->is('pesanan') || request()->is('pesanan/*') ? 'active' : '' }}">
-                    ▣ &nbsp; Pesanan
-                </a>
-
-                <a href="/" target="_blank" rel="noopener">
-                    ↗ &nbsp; Lihat Toko
+                class="{{ request()->is('pesanan') || request()->is('pesanan/*') ? 'active' : '' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                        width="20" height="20" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="1.8"
+                        stroke-linecap="round" stroke-linejoin="round"
+                        aria-hidden="true">
+                        <path d="M6 2h9l5 5v15H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2Z"/>
+                        <path d="M14 2v6h6"/>
+                        <path d="M8 13h8"/>
+                        <path d="M8 17h8"/>
+                    </svg>
+                    <span>Pesanan</span>
                 </a>
             </nav>
 
             <div class="admin-sidebar-bottom">
                 <form action="/logout" method="POST">
                     @csrf
-                    <button type="submit" class="admin-logout">
-                        ⇥ &nbsp; Keluar dari Admin
+                    <button type="submit" class="admin-logout-button">
+                        <svg xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true">
+                            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+                            <path d="M16 17l5-5-5-5"/>
+                            <path d="M21 12H9"/>
+                        </svg>
+                        <span>Logout</span>
                     </button>
                 </form>
             </div>
@@ -519,7 +608,7 @@
                 </div>
 
                 <div class="admin-user-badge">
-                    Admin: {{ auth()->user()->name }}
+                    Admin: <strong>{{ auth()->user()->name }}</strong>
                 </div>
             </header>
 

@@ -59,7 +59,19 @@
     <section class="dashboard-stock-stats">
         <a href="{{ url('/produk?stock=habis') }}"
             class="dashboard-stock-card stock-empty dashboard-stock-link">
-            <div class="dashboard-stock-icon">!</div>
+            <div class="dashboard-stock-icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+                    <path d="M10 4h4l-1 11h-2L10 4z" />
+                    <path d="M12 17a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z" />
+                </svg>
+            </div>
             <div>
                 <div class="dashboard-stock-label">Stok Habis</div>
                 <div class="dashboard-stock-value">
@@ -73,7 +85,24 @@
 
         <a href="{{ url('/produk?stock=menipis') }}"
             class="dashboard-stock-card stock-low dashboard-stock-link">
-            <div class="dashboard-stock-icon">↓</div>
+            <div class="dashboard-stock-icon">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+                    <path d="M12 4v12" />
+                    <path d="m7 11 5 5 5-5" />
+                    <path d="M5 20h14" />
+                </svg>
+            </div>
             <div>
                 <div class="dashboard-stock-label">Stok Menipis</div>
                 <div class="dashboard-stock-value">
@@ -314,6 +343,13 @@
         font-weight: bold;
     }
 
+    .dashboard-stock-icon svg {
+        display: block;
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+    }
+    
     .stock-low .dashboard-stock-icon {
         background: #fef3c7;
         color: #92400e;

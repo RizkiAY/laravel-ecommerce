@@ -378,13 +378,49 @@
         }
 
         .alert-success {
+            padding: 20px;
+            margin-bottom: 22px;
+            border: 1px solid #c8dfce;
+            border-radius: 16px;
             background: #dcfce7;
             color: #166534;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .alert-success h2 {
+            margin: 0 0 5px;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .alert-success p {
+            margin: 0;
+            color: #526454;
+            font-size: 14px;
+            line-height: 1.5;
         }
 
         .alert-error {
+            padding: 20px;
+            margin-bottom: 22px;
+            border: 1px solid #dfc8c8;
+            border-radius: 16px;
             background: #fee2e2;
             color: #991b1b;
+        }
+
+        .alert-error h2 {
+            margin: 0 0 5px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .alert-error p {
+            margin: 0;
+            color: #645252;
+            font-size: 14px;
         }
 
         /* Checkbox berada di luar gambar, di sebelah kiri */
@@ -618,8 +654,9 @@
     </div>
 
     @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
+        <div class="alert-success">
+            <h2>Berhasil</h2>
+            <p>{{ session('success') }}</p>
         </div>
     @endif
 

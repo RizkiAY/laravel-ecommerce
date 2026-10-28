@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Akun - Kotoko</title>
+    <title>Daftar Akun - KOTOKO</title>
 
     <style>
         * {
@@ -12,7 +12,7 @@
 
         :root {
             --bg-main: #fbf9f5;
-            --bg-card: #fbf9f5;
+            --bg-card: #f5f1e9;
             --bg-secondary: #f5f1e9;
             --border: #e3e0da;
             --border-input: #d5d0c7;

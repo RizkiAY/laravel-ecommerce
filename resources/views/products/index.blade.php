@@ -440,26 +440,35 @@
             box-shadow: 0 10px 30px rgb(0 0 0 / 40%);
         }
 
+        /* FRAME PUTIH GAMBAR PRODUK */
         .product-image-link {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 210px;
+            padding: 18px;
             overflow: hidden;
             background: #ffffff;
+            border-bottom: 1px solid var(--border);
             color: inherit;
             text-decoration: none;
         }
 
-        .product-image,
-        .product-image-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .product-image {
+            display: block;
             width: 100%;
-            height: 210px;
+            height: 100%;
             object-fit: contain;
             background: #ffffff;
         }
 
         .product-image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
             color: #99958d;
             font-size: 45px;
         }

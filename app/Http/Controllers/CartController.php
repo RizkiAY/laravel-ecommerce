@@ -245,7 +245,12 @@ class CartController extends Controller
         $validated = $request->validate([
             'customer_name' => ['required', 'string', 'max:255'],
             'phone' => ['required', 'string', 'max:30'],
+            'email' => ['nullable', 'email', 'max:255'],
             'address' => ['required', 'string', 'max:2000'],
+            'city' => ['required', 'string', 'max:255'],
+            'postal_code' => ['nullable', 'string', 'max:20'],
+            'notes' => ['nullable', 'string', 'max:2000'],
+            'payment_method' => ['required', 'in:card,virtual_account'],
         ]);
 
         $userId = auth()->id();
@@ -323,7 +328,12 @@ class CartController extends Controller
             $order = Order::create([
                 'customer_name' => $validated['customer_name'],
                 'phone' => $validated['phone'],
+                'email' => $validated['email'] ?? null,
                 'address' => $validated['address'],
+                'city' => $validated['city'],
+                'postal_code' => $validated['postal_code'] ?? null,
+                'notes' => $validated['notes'] ?? null,
+                'payment_method' => $validated['payment_method'],
                 'total' => round($total, 2),
                 'status' => 'pending',
             ]);
@@ -355,9 +365,30 @@ class CartController extends Controller
         });
 
         session()->forget('selected_products');
+        session(['last_order_id' => $order->id]);
 
-        return redirect('/checkout')
-            ->with('order_success', true)
-            ->with('order_id', $order->id);
+        return redirect('/invoice')
+            ->with('success', 'Detail pesanan kamu tercatat di bawah ini. Silakan simpan invoice sebagai referensi pesanan.');
+    }
+
+    public function invoice()
+    {
+        $orderId = session('last_order_id');
+
+        if (!$orderId) {
+            return redirect('/produk')
+                ->with('error', 'Invoice tidak ditemukan.');
+        }
+
+        $order = Order::with('items')->find($orderId);
+
+        if (!$order) {
+            session()->forget('last_order_id');
+
+            return redirect('/produk')
+                ->with('error', 'Pesanan tidak ditemukan.');
+        }
+
+        return view('cart.invoice', compact('order'));
     }
 }

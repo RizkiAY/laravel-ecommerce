@@ -7,6 +7,11 @@
 @section('content')
 
     <style>
+        
+        .admin-name {
+            font-weight: 700;
+        }
+
         /* TOOLBAR DAN FILTER */
         .product-toolbar {
             display: flex;
@@ -130,21 +135,37 @@
             transform: translateY(-2px);
         }
 
+        /* FRAME PUTIH GAMBAR PRODUK */
         .product-image-link {
-            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 210px;
+            padding: 18px;
+            overflow: hidden;
+            background: #ffffff;
+            border-bottom: 1px solid #334155;
             color: inherit;
             text-decoration: none;
         }
 
-        .product-image,
+        .product-image {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #ffffff;
+        }
+
         .product-image-placeholder {
             display: flex;
-            width: 100%;
-            height: 190px;
-            object-fit: cover;
             align-items: center;
             justify-content: center;
-            background: #1e293b;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+            color: #99958d;
+            font-size: 45px;
         }
 
         .product-image-placeholder {
@@ -174,11 +195,17 @@
 
         /* NAMA DAN DESKRIPSI */
         .product-name {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+
             margin: 0 0 9px;
             color: #f8fafc;
             font-size: 17px;
             font-weight: 700;
             overflow-wrap: anywhere;
+            line-height: 1.4;
         }
 
         .product-name a {
