@@ -261,7 +261,7 @@
                     >
 
                     <div class="hint">
-                        Hanya diperlukan untuk mendaftar sebagai admin.
+                        Diperlukan untuk mendaftar sebagai admin.
                     </div>
 
                     @error('admin_code')

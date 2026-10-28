@@ -32,10 +32,6 @@
     </a>
 </div>
 
-@if (session('success'))
-    <div class="product-success">{{ session('success') }}</div>
-@endif
-
 @if ($products->isEmpty())
     <div class="product-empty">
         <h2>Produk tidak ditemukan</h2>

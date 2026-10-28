@@ -13,126 +13,220 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #1f2937;
+            background: #020617;
+            color: #f1f5f9;
         }
 
-        header {
-            background: white;
-            padding: 20px 7%;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .logo {
-            color: #2563eb;
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .container {
-            max-width: 650px;
+        main {
+            max-width: 700px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
         .form-card {
-            background: white;
+            background: #111827;
             padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
         h1 {
-            margin-top: 0;
+            margin: 0 0 10px;
+            color: #f8fafc;
+            font-size: 25px;
         }
 
         .subtitle {
-            color: #6b7280;
-            margin-bottom: 28px;
+            margin: 0 0 28px;
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
         }
 
         .field {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 9px;
+            color: #f1f5f9;
+            font-size: 13px;
             font-weight: bold;
         }
 
-        input, textarea {
+        input,
+        textarea,
+        select {
+            display: block;
             width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
+            padding: 12px 14px;
+            border: 1px solid #475569;
             border-radius: 8px;
+            background: #0f172a;
+            color: #f1f5f9;
             font: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        input:focus, textarea:focus {
-            outline: 2px solid #93c5fd;
-            border-color: #2563eb;
+        input,
+        select {
+            min-height: 44px;
         }
 
         textarea {
-            min-height: 110px;
+            min-height: 120px;
             resize: vertical;
+            line-height: 1.6;
         }
 
-        .button {
-            display: inline-block;
-            padding: 12px 18px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 15px;
-            text-decoration: none;
+        input::placeholder,
+        textarea::placeholder {
+            color: #64748b;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        select option {
+            background: #111827;
+            color: #f1f5f9;
+        }
+
+        input[type="file"] {
+            padding: 8px;
+            color: #cbd5e1;
+        }
+
+        input[type="file"]::file-selector-button {
+            margin-right: 12px;
+            padding: 8px 12px;
+            border: 0;
+            border-radius: 6px;
+            background: #334155;
+            color: #f1f5f9;
+            font: inherit;
             cursor: pointer;
         }
 
-        .button:hover {
+        input[type="file"]::file-selector-button:hover {
+            background: #475569;
+        }
+
+        .help-text {
+            display: block;
+            margin-top: 9px;
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .errors {
+            margin: 0 0 24px;
+            padding: 14px 16px 14px 36px;
+            border: 1px solid #7f1d1d;
+            border-radius: 10px;
+            background: #450a0a;
+            color: #fecaca;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .errors li {
+            padding-left: 2px;
+        }
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+            padding-top: 22px;
+            border-top: 1px solid #334155;
+        }
+
+        .button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 12px 18px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
+        }
+
+        .primary {
+            background: #2563eb;
+            color: #ffffff;
+        }
+
+        .primary:hover {
             background: #1d4ed8;
         }
 
         .secondary {
-            background: #e5e7eb;
-            color: #1f2937;
-            margin-left: 8px;
+            border-color: #475569;
+            background: #1e293b;
+            color: #cbd5e1;
         }
 
         .secondary:hover {
-            background: #d1d5db;
+            border-color: #64748b;
+            background: #334155;
+            color: #ffffff;
         }
 
-        .errors {
-            background: #fee2e2;
-            color: #991b1b;
-            border-radius: 8px;
-            padding: 12px 12px 12px 32px;
-            margin-bottom: 20px;
+        .button:focus-visible {
+            outline: 3px solid #60a5fa;
+            outline-offset: 3px;
         }
 
-        @media (max-width: 500px) {
-            .form-card {
-                padding: 20px;
+        @media (max-width: 600px) {
+            main {
+                margin: 24px auto;
+                padding: 0 14px;
             }
 
-            .secondary {
-                margin: 10px 0 0;
+            .form-card {
+                padding: 22px 18px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .form-actions {
+                align-items: stretch;
+            }
+
+            .form-actions .button {
+                flex: 1;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">KOTOKO.</div>
-    </header>
 
-    <main class="container">
+    <main>
         <div class="form-card">
             <h1>Tambah Produk</h1>
-            <p class="subtitle">Isi informasi produk yang ingin dijual.</p>
+            <p class="subtitle">
+                Isi informasi produk yang ingin dijual.
+            </p>
 
             @if ($errors->any())
                 <ul class="errors">
@@ -155,14 +249,13 @@
                         required
                     >
                 </div>
-                
+
                 <div class="field">
                     <label for="category_id">Kategori *</label>
                     <select
                         id="category_id"
                         name="category_id"
                         required
-                        style="width:100%; padding:12px; border:1px solid #d1d5db; border-radius:8px; font:inherit;"
                     >
                         <option value="">-- Pilih kategori --</option>
 
@@ -219,18 +312,23 @@
                         name="image"
                         accept=".jpg,.jpeg,.png,.webp"
                     >
-                    <small>Format JPG, PNG, atau WebP. Maksimal 2 MB.</small>
+                    <small class="help-text">
+                        Format JPG, PNG, atau WebP. Maksimal 2 MB.
+                    </small>
                 </div>
 
-                <button type="submit" class="button">
-                    Simpan Produk
-                </button>
+                <div class="form-actions">
+                    <button type="submit" class="button primary">
+                        Simpan Produk
+                    </button>
 
-                <a href="/produk" class="button secondary">
-                    Batal
-                </a>
+                    <a href="/produk" class="button secondary">
+                        Batal
+                    </a>
+                </div>
             </form>
         </div>
     </main>
+
 </body>
 </html>

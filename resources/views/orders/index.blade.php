@@ -299,6 +299,157 @@
             outline-offset: 3px;
         }
 
+        /* FILTER STATUS PESANAN */
+        .order-filter {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 22px;
+            padding: 16px 20px;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            background: #111827;
+        }
+
+        .order-filter label {
+            color: #f1f5f9;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .order-filter select {
+            min-width: 200px;
+            max-width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            background: #0f172a;
+            color: #f1f5f9;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        .order-filter select:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        .order-filter {
+            display: flex;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 22px;
+            padding: 18px 20px;
+            border: 1px solid #334155;
+            border-radius: 12px;
+            background: #111827;
+        }
+
+        .filter-field {
+            display: flex;
+            flex: 1 1 180px;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 0;
+        }
+
+        .filter-field label {
+            color: #f1f5f9;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .filter-field input,
+        .filter-field select {
+            width: 100%;
+            min-width: 0;
+            padding: 11px 12px;
+            border: 1px solid #475569;
+            border-radius: 8px;
+            background: #0f172a;
+            color: #f1f5f9;
+            font: inherit;
+        }
+
+        .filter-field input::placeholder {
+            color: #94a3b8;
+        }
+
+        .filter-field input:focus,
+        .filter-field select:focus {
+            outline: 2px solid #3b82f6;
+            outline-offset: 2px;
+        }
+
+        .filter-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-button,
+        .filter-reset {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 42px;
+            padding: 10px 14px;
+            border: 1px solid #3b82f6;
+            border-radius: 8px;
+            background: #2563eb;
+            color: #fff;
+            font: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .filter-button:hover {
+            background: #1d4ed8;
+        }
+
+        .filter-reset {
+            border-color: #475569;
+            background: #1e293b;
+            color: #e2e8f0;
+        }
+
+        .filter-reset:hover {
+            background: #334155;
+        }
+
+        @media (max-width: 600px) {
+            .order-filter {
+                align-items: stretch;
+                flex-direction: column;
+                padding: 16px;
+            }
+
+            .filter-field,
+            .filter-actions {
+                width: 100%;
+            }
+
+            .filter-actions > * {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .order-filter {
+                align-items: stretch;
+                flex-direction: column;
+                padding: 16px;
+            }
+
+            .order-filter select {
+                width: 100%;
+            }
+        }
+
         /* RESPONSIVE */
         @media (max-width: 600px) {
             .order-card {
@@ -329,6 +480,68 @@
         </div>
     @endif
 
+    <form action="{{ url('/pesanan') }}" method="GET" class="order-filter">
+
+        <div class="filter-field">
+            <label for="filter-order-id">Nomor Pesanan</label>
+            <input
+                type="number"
+                name="order_id"
+                id="filter-order-id"
+                min="1"
+                placeholder="Contoh: 105"
+                value="{{ $orderId ?? '' }}"
+            >
+        </div>
+
+        <div class="filter-field">
+            <label for="filter-customer-id">ID Pelanggan</label>
+            <input
+                type="number"
+                name="customer_id"
+                id="filter-customer-id"
+                min="1"
+                placeholder="Contoh: 21"
+                value="{{ $customerId ?? '' }}"
+            >
+        </div>
+
+        <div class="filter-field">
+            <label for="filter-status">Status Pesanan</label>
+            <select name="status" id="filter-status">
+                <option value="" @selected(($status ?? '') === '')>
+                    Semua Status
+                </option>
+                <option value="pending" @selected(($status ?? '') === 'pending')>
+                    Pending
+                </option>
+                <option value="diproses" @selected(($status ?? '') === 'diproses')>
+                    Diproses
+                </option>
+                <option value="dikirim" @selected(($status ?? '') === 'dikirim')>
+                    Dikirim
+                </option>
+                <option value="selesai" @selected(($status ?? '') === 'selesai')>
+                    Selesai
+                </option>
+                <option value="dibatalkan" @selected(($status ?? '') === 'dibatalkan')>
+                    Dibatalkan
+                </option>
+            </select>
+        </div>
+
+        <div class="filter-actions">
+            <button type="submit" class="filter-button">
+                Cari Pesanan
+            </button>
+
+            <a href="{{ url('/pesanan') }}" class="filter-reset">
+                Reset
+            </a>
+        </div>
+
+    </form>
+
     @if ($orders->isEmpty())
         <div class="order-empty">
             <h2>Belum ada pesanan</h2>
@@ -344,7 +557,7 @@
 
                             <p>
                                 <strong>Pelanggan:</strong>
-                                {{ $order->customer_name }}
+                                {{ $order->customer_name }} #{{ $order->user_id }}
                             </p>
 
                             <p>

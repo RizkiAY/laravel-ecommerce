@@ -326,6 +326,7 @@ class CartController extends Controller
             }
 
             $order = Order::create([
+                'user_id' => auth()->id(),
                 'customer_name' => $validated['customer_name'],
                 'phone' => $validated['phone'],
                 'email' => $validated['email'] ?? null,

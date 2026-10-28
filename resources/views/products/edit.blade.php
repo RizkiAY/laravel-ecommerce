@@ -6,99 +6,270 @@
     <title>Edit Produk | KOTOKO</title>
 
     <style>
-        * { box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+        }
 
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #1f2937;
+            background: #020617;
+            color: #f1f5f9;
         }
 
         header {
-            background: white;
+            background: #111827;
             padding: 20px 7%;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 1px solid #334155;
         }
 
         .logo {
-            color: #2563eb;
+            color: #3b82f6;
             font-size: 24px;
             font-weight: bold;
+            letter-spacing: 0.3px;
         }
 
         main {
-            max-width: 650px;
+            max-width: 700px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
         .card {
-            background: white;
+            background: #111827;
             padding: 30px;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
+            border: 1px solid #334155;
+            border-radius: 14px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
         }
 
-        .field { margin-bottom: 20px; }
+        h1 {
+            margin: 0 0 10px;
+            color: #f8fafc;
+            font-size: 25px;
+        }
+
+        .description {
+            margin: 0 0 28px;
+            color: #94a3b8;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .field {
+            margin-bottom: 22px;
+        }
 
         label {
             display: block;
+            margin-bottom: 9px;
+            color: #f1f5f9;
+            font-size: 13px;
             font-weight: bold;
-            margin-bottom: 8px;
         }
 
-        input, textarea {
+        input,
+        textarea,
+        select {
+            display: block;
             width: 100%;
-            padding: 12px;
-            border: 1px solid #d1d5db;
+            padding: 12px 14px;
+            border: 1px solid #475569;
             border-radius: 8px;
+            background: #0f172a;
+            color: #f1f5f9;
             font: inherit;
+            font-size: 14px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input,
+        select {
+            min-height: 44px;
         }
 
         textarea {
-            min-height: 110px;
+            min-height: 120px;
             resize: vertical;
+            line-height: 1.6;
         }
 
-        button, .back {
-            display: inline-block;
-            padding: 12px 18px;
+        input::placeholder,
+        textarea::placeholder {
+            color: #64748b;
+        }
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        select option {
+            background: #111827;
+            color: #f1f5f9;
+        }
+
+        input[type="file"] {
+            padding: 8px;
+            color: #cbd5e1;
+        }
+
+        input[type="file"]::file-selector-button {
+            margin-right: 12px;
+            padding: 8px 12px;
             border: 0;
+            border-radius: 6px;
+            background: #334155;
+            color: #f1f5f9;
+            font: inherit;
+            cursor: pointer;
+        }
+
+        input[type="file"]::file-selector-button:hover {
+            background: #475569;
+        }
+
+        .current-image {
+            margin: 0 0 14px;
+            padding: 14px;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            background: #0f172a;
+        }
+
+        .current-image p {
+            margin: 0 0 12px;
+            color: #cbd5e1;
+            font-size: 13px;
+        }
+
+        .current-image img {
+            display: block;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 1px solid #334155;
             border-radius: 8px;
-            font-size: 15px;
+        }
+
+        .help-text {
+            display: block;
+            margin-top: 9px;
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .errors {
+            margin: 0 0 24px;
+            padding: 14px 16px 14px 36px;
+            border: 1px solid #7f1d1d;
+            border-radius: 10px;
+            background: #450a0a;
+            color: #fecaca;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        .errors li {
+            padding-left: 2px;
+        }
+
+        .form-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 30px;
+            padding-top: 22px;
+            border-top: 1px solid #334155;
+        }
+
+        button,
+        .back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 12px 18px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: bold;
             text-decoration: none;
             cursor: pointer;
+            transition: background 0.2s, border-color 0.2s;
         }
 
         button {
             background: #2563eb;
-            color: white;
+            color: #ffffff;
+        }
+
+        button:hover {
+            background: #1d4ed8;
         }
 
         .back {
-            background: #e5e7eb;
-            color: #1f2937;
-            margin-left: 8px;
+            border-color: #475569;
+            background: #1e293b;
+            color: #cbd5e1;
         }
 
-        .errors {
-            color: #991b1b;
-            background: #fee2e2;
-            padding: 12px 12px 12px 32px;
-            border-radius: 8px;
+        .back:hover {
+            border-color: #64748b;
+            background: #334155;
+            color: #ffffff;
+        }
+
+        button:focus-visible,
+        .back:focus-visible {
+            outline: 3px solid #60a5fa;
+            outline-offset: 3px;
+        }
+
+        @media (max-width: 600px) {
+            header {
+                padding: 18px 20px;
+            }
+
+            main {
+                margin: 24px auto;
+                padding: 0 14px;
+            }
+
+            .card {
+                padding: 22px 18px;
+            }
+
+            h1 {
+                font-size: 22px;
+            }
+
+            .form-actions {
+                align-items: stretch;
+            }
+
+            .form-actions button,
+            .form-actions .back {
+                flex: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="logo">KOTOKO.</div>
-    </header>
 
     <main>
         <div class="card">
             <h1>Edit Produk</h1>
-            <p>Perbarui informasi produk di bawah ini.</p>
+            <p class="description">
+                Perbarui informasi produk di bawah ini.
+            </p>
 
             @if ($errors->any())
                 <ul class="errors">
@@ -108,7 +279,11 @@
                 </ul>
             @endif
 
-            <form action="/produk/{{ $product->id }}" method="POST" enctype="multipart/form-data">
+            <form
+                action="/produk/{{ $product->id }}"
+                method="POST"
+                enctype="multipart/form-data"
+            >
                 @csrf
                 @method('PUT')
 
@@ -129,7 +304,6 @@
                         id="category_id"
                         name="category_id"
                         required
-                        style="width:100%; padding:12px; border:1px solid #d1d5db; border-radius:8px; font:inherit;"
                     >
                         <option value="">-- Pilih kategori --</option>
 
@@ -182,12 +356,13 @@
                     <label for="image">Ganti foto produk (opsional)</label>
 
                     @if ($product->image)
-                        <p>Foto saat ini:</p>
-                        <img
-                            src="{{ asset('storage/' . $product->image) }}"
-                            alt="{{ $product->name }}"
-                            style="width: 150px; height: 150px; object-fit: cover; border-radius: 8px;"
-                        >
+                        <div class="current-image">
+                            <p>Foto saat ini:</p>
+                            <img
+                                src="{{ asset('storage/' . $product->image) }}"
+                                alt="{{ $product->name }}"
+                            >
+                        </div>
                     @endif
 
                     <input
@@ -197,11 +372,15 @@
                         accept=".jpg,.jpeg,.png,.webp"
                     >
 
-                    <small>Kosongkan jika tidak ingin mengganti foto.</small>
+                    <small class="help-text">
+                        Kosongkan jika tidak ingin mengganti foto.
+                    </small>
                 </div>
 
-                <button type="submit">Simpan Perubahan</button>
-                <a href="/produk" class="back">Batal</a>
+                <div class="form-actions">
+                    <button type="submit">Simpan Perubahan</button>
+                    <a href="/produk" class="back">Batal</a>
+                </div>
             </form>
         </div>
     </main>
