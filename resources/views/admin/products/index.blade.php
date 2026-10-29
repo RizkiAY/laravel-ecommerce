@@ -56,49 +56,85 @@
             color: #f1f5f9;
         }
 
+        /* TOMBOL FILTER DAN DETAIL PRODUK */
         .product-filter button,
-        .product-add-button,
         .product-detail-button {
             display: inline-block;
-            padding: 11px 15px;
-            border: 1px solid #3b82f6;
-            border-radius: 8px;
-            background: #2563eb;
+            padding: 10px 14px;
+            background: #0049e6;
             color: #ffffff !important;
-            text-decoration: none;
+            border: 1px solid #3b82f6;
+            border-radius: 7px;
+            cursor: pointer;
             font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s, border-color 0.2s, transform 0.2s;
+            text-decoration: none;
+            font-family: inherit;
+            transition: background-color 0.2s ease,
+                        border-color 0.2s ease;
         }
 
         .product-filter button:hover,
         .product-detail-button:hover {
-            background: #1d4ed8;
+            background-color: #0550f2;
             border-color: #60a5fa;
+            color: #ffffff !important;
         }
 
+        /* TOMBOL TAMBAH PRODUK */
         .product-add-button {
-            background: #15803d;
-            border-color: #16a34a;
-            white-space: nowrap;
+            display: inline-block;
+            padding: 10px 14px;
+            background: #02ad41;
+            color: #ffffff !important;
+            border: 1px solid #21c95f;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            font-family: inherit;
+            transition: background-color 0.2s ease,
+                        border-color 0.2s ease;
         }
 
         .product-add-button:hover {
-            background: #166534;
-            border-color: #22c55e;
+            background-color: #04c54b;
+            border-color: #079c3d;
         }
 
+        /* TOMBOL DETAIL PRODUK */
+        .product-detail-button {
+            display: block;
+            text-align: center;
+        }
+
+        /* TOMBOL RESET */
         .product-filter a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             align-self: center;
-            color: #93c5fd;
+            min-height: 42px;
+            box-sizing: border-box;
+            padding: 10px 14px;
+            background: transparent;
+            color: #00a8f0;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            cursor: pointer;
             font-size: 14px;
+            font-weight: 600;
             text-decoration: none;
+            font-family: inherit;
+            transition: color 0.2s ease,
+                        border-color 0.2s ease;
         }
 
         .product-filter a:hover {
-            color: #bfdbfe;
-            text-decoration: underline;
+            color: #69bfe1;
+            border-color: #334155;
+            text-decoration: none;
         }
 
         /* PESAN SUKSES */
@@ -273,7 +309,7 @@
 
         .product-admin-actions a:hover {
             color: #e1b569;
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         .product-admin-actions form {
@@ -288,11 +324,12 @@
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
+            text-decoration: none;
         }
 
         .product-admin-actions button:hover {
             color: #eb6c6c;
-            text-decoration: underline;
+            text-decoration: none;
         }
 
         /* KONDISI PRODUK KOSONG */
@@ -351,6 +388,27 @@
                 width: 100%;
                 text-align: center;
             }
+        }
+
+        /* SAMAKAN TINGGI ELEMEN DENGAN TOMBOL TAMBAH PRODUK */
+        .product-filter input,
+        .product-filter select {
+            height: auto;
+            min-height: 0;
+            padding: 10px 12px;
+            box-sizing: border-box;
+            font-size: 14px;
+            line-height: normal;
+        }
+
+        .product-filter button,
+        .product-filter a {
+            height: auto;
+            min-height: 0;
+            padding: 10px 14px;
+            box-sizing: border-box;
+            font-size: 14px;
+            line-height: normal;
         }
     </style>
 

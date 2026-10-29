@@ -206,10 +206,11 @@
             color: #333333;
             font-weight: 700;
             text-decoration: none;
+            transition: color .15s;
         }
 
         a:hover {
-            text-decoration: underline;
+            color: #84827d;
         }
 
         .error {
@@ -287,6 +288,10 @@
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: .4px;
+        }
+
+        .top-nav a:hover{
+            color: #cbcbcb;
         }
 
         .top-nav .nav-login {

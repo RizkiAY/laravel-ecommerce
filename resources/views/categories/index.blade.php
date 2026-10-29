@@ -63,7 +63,7 @@
         .category-button {
             display: inline-block;
             padding: 10px 14px;
-            background: #2563eb;
+            background: #0049e6;
             color: #ffffff !important;
             border: 1px solid #3b82f6;
             border-radius: 7px;
@@ -76,7 +76,7 @@
         }
 
         .category-button:hover {
-            background: #1d4ed8;
+            background: #0049e6;
         }
 
         .category-button-edit {

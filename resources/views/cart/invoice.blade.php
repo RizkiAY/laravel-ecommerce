@@ -37,19 +37,19 @@
 
         .breadcrumbs {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
             gap: 12px;
             margin-bottom: 20px;
             font-size: 14px;
         }
-
         .breadcrumbs a {
             color: var(--muted);
             text-decoration: none;
+            transition: color .15s;
         }
-
         .breadcrumbs a:hover { color: var(--text); }
+        .breadcrumbs .separator { color: #b4b0a8; }
+        .breadcrumbs .current { color: var(--text); font-weight: 500; }
         .separator { color: #b4b0a8; }
         .separator-active { color: #000000; }
 

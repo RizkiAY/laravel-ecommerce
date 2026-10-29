@@ -204,7 +204,7 @@
         }
 
         .order-update button {
-            padding: 11px 16px;
+            padding: 11px 14px;
             border: 1px solid #3b82f6;
             border-radius: 8px;
             background: #2563eb;
@@ -349,10 +349,10 @@
 
         .filter-field {
             display: flex;
-            flex: 1 1 180px;
+            flex: 1 1 150px;
             flex-direction: column;
             gap: 8px;
-            min-width: 0;
+            min-width: 150px;
         }
 
         .filter-field label {
@@ -364,13 +364,15 @@
         .filter-field input,
         .filter-field select {
             width: 100%;
-            min-width: 0;
-            padding: 11px 12px;
+            min-width: 150px;
+            padding: 10px 12px;
             border: 1px solid #475569;
             border-radius: 8px;
             background: #0f172a;
             color: #f1f5f9;
-            font: inherit;
+            font-size: 14px;
+            font-family: inherit;
+            box-sizing: border-box;
         }
 
         .filter-field input::placeholder {
@@ -383,59 +385,64 @@
             outline-offset: 2px;
         }
 
+        /* AKSI FILTER PESANAN */
         .filter-actions {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
         }
 
-        .filter-button,
-        .filter-reset {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 42px;
+        /* TOMBOL CARI PESANAN */
+        .filter-button {
+            display: inline-block;
             padding: 10px 14px;
+            background: #0049e6;
+            color: #ffffff !important;
             border: 1px solid #3b82f6;
-            border-radius: 8px;
-            background: #2563eb;
-            color: #fff;
-            font: inherit;
+            border-radius: 7px;
+            cursor: pointer;
             font-size: 14px;
             font-weight: 600;
             text-decoration: none;
-            cursor: pointer;
+            font-family: inherit;
+            transition: background-color 0.2s ease,
+                        border-color 0.2s ease;
         }
 
         .filter-button:hover {
-            background: #1d4ed8;
+            background-color: #0550f2;
+            border-color: #60a5fa;
+            color: #ffffff !important;
         }
 
+        /* TOMBOL RESET */
         .filter-reset {
-            border-color: #475569;
-            background: #1e293b;
-            color: #e2e8f0;
+            display: inline-block;
+            padding: 10px 14px;
+            background: transparent;
+            color: #00a8f0;
+            border: 1px solid transparent;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            font-family: inherit;
+            transition: color 0.2s ease,
+                        border-color 0.2s ease;
         }
 
         .filter-reset:hover {
-            background: #334155;
+            color: #69bfe1;
+            border-color: #334155;
+            text-decoration: none;
         }
 
-        @media (max-width: 600px) {
-            .order-filter {
-                align-items: stretch;
-                flex-direction: column;
-                padding: 16px;
-            }
-
-            .filter-field,
-            .filter-actions {
-                width: 100%;
-            }
-
-            .filter-actions > * {
-                flex: 1;
-            }
+        /* FOKUS KEYBOARD */
+        .filter-button:focus-visible,
+        .filter-reset:focus-visible {
+            outline: 2px solid #93c5fd;
+            outline-offset: 3px;
         }
 
         @media (max-width: 600px) {
@@ -468,6 +475,34 @@
 
             .order-total {
                 font-size: 17px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .order-filter {
+                align-items: stretch;
+                flex-direction: column;
+                padding: 16px;
+            }
+
+            .filter-field {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .filter-field input,
+            .filter-field select {
+                width: 100%;
+                min-width: 0;
+            }
+
+            .filter-actions {
+                width: 100%;
+            }
+
+            .filter-actions > * {
+                flex: 1;
+                text-align: center;
             }
         }
     </style>
@@ -535,9 +570,7 @@
                 Cari Pesanan
             </button>
 
-            <a href="{{ url('/pesanan') }}" class="filter-reset">
-                Reset
-            </a>
+            <a href="{{ url('/pesanan') }}" class="filter-reset">Reset</a>
         </div>
 
     </form>

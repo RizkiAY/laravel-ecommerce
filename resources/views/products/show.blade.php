@@ -47,26 +47,19 @@
 
         .breadcrumb {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            gap: 9px;
-            margin-bottom: 28px;
-            color: var(--muted);
-            font-size: 12px;
+            gap: 12px;
+            margin-bottom: 20px;
+            font-size: 14px;
         }
-
         .breadcrumb a {
+            color: var(--muted);
             text-decoration: none;
+            transition: color .15s;
         }
-
-        .breadcrumb a:hover {
-            color: var(--green);
-            text-decoration: underline;
-        }
-
-        .breadcrumb .separator {
-            color: #b5b0a7;
-        }
+        .breadcrumb a:hover { color: var(--text); }
+        .breadcrumb .separator { color: #b4b0a8; }
+        .breadcrumb .current { color: var(--text); font-weight: 500; }
 
         .product-layout {
             display: grid;
