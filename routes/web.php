@@ -7,6 +7,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 
 Route::get('/', [ProductController::class, 'index'])
     ->name('home');
@@ -36,6 +37,12 @@ Route::get('/produk', [ProductController::class, 'index']);
 Route::get('/produk/{product}', [ProductController::class, 'show']);
 
 Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'index'])
+        ->name('profile');
+
+    Route::put('/profile', [ProfileController::class, 'update'])
+        ->name('profile.update');
+
     Route::get('/keranjang', [CartController::class, 'index'])
         ->name('cart.index');
 

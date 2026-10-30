@@ -876,7 +876,7 @@
             {{-- RINGKASAN PESANAN --}}
             <aside class="order-summary">
 
-                <h2 class="summary-title">Order Summary</h2>
+                <h2 class="summary-title">Ringkasan Pesanan</h2>
 
                 <div class="summary-row">
                     <span class="label">Subtotal</span>
@@ -886,14 +886,14 @@
                 </div>
 
                 <div class="summary-row discount">
-                    <span class="label">Discount (-20%)</span>
+                    <span class="label">Diskon (-20%)</span>
                     <span class="value" id="summary-discount">
                         -Rp {{ number_format($discount, 0, ',', '.') }}
                     </span>
                 </div>
 
                 <div class="summary-row">
-                    <span class="label">Delivery Fee</span>
+                    <span class="label">Ongkos Kirim</span>
                     <span class="value" id="summary-delivery">
                         Rp {{ number_format($deliveryFee, 0, ',', '.') }}
                     </span>

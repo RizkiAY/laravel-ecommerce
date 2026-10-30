@@ -133,157 +133,146 @@
             background: var(--accent-hover);
         }
 
-        /* MENU KANAN HEADER */
+        /* HEADER AKUN + DROPDOWN */
+        .public-header {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            padding: 12px 4%;
+            background: var(--bg-header);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 18px rgb(0 0 0 / 5%);
+            position: relative;
+            z-index: 20;
+        }
+
+        .header-search {
+            display: flex;
+            flex: 1 1 auto;
+            min-width: 120px;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
         .public-nav {
             display: flex;
             align-items: center;
             justify-content: flex-end;
             flex: 0 0 auto;
-            gap: 15px;
-            margin-left: 0;
-        }
-
-        .public-nav a {
-            color: #555550;
-            font-size: 13px;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .public-nav a:hover {
-            color: #333333;
+            gap: 22px;
         }
 
         .public-nav .cart-link {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 7px;
             color: #080808;
+            text-decoration: none;
         }
 
-        .cart-link svg {
-            display: block;
-            width: 23px;
-            height: 23px;
-        }
+        .cart-link svg { width: 25px; height: 25px; display: block; }
 
-        .public-nav .register-link,
-        .public-nav .login-link {
-            padding: 9px 13px;
-            border-radius: 7px;
-        }
-
-        .public-nav .register-link {
-            border: 1px solid #d5d0c7;
-            background: #fbf9f5;
-        }
-
-        .public-nav .login-link {
-            background: var(--accent);
-            color: #fff;
-        }
-
-        .public-nav .login-link:hover {
-            background: var(--accent-hover);
-            color: #fff;
-        }
-
-        .public-nav .customer-greeting {
-            color: #555550;
-            font-size: 13px;
-            white-space: nowrap;
-        }
-
-        .public-nav .logout-button {
-            padding: 8px 0;
-            border: 0;
-            background: transparent;
-            color: #ff3338;
-            font-family: inherit;
-            font-size: 13px;
+        .account-dropdown { position: relative; }
+        .account-dropdown summary {
+            display: flex;
+            align-items: center;
+            gap: 11px;
+            list-style: none;
             cursor: pointer;
-            white-space: nowrap;
+            user-select: none;
         }
-
-        .public-nav .logout-button:hover {
-            color: #cc252a;
+        .account-dropdown summary::-webkit-details-marker { display: none; }
+        .account-avatar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            flex: 0 0 44px;
+            overflow: hidden;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            background: #e9e4da;
+            color: #34342f;
+            font-size: 16px;
+            font-weight: 700;
+            box-shadow: 0 1px 5px rgb(0 0 0 / 10%);
         }
+        .account-avatar img { width: 100%; height: 100%; object-fit: cover; }
+        .account-greeting { display: flex; flex-direction: column; line-height: 1.35; white-space: nowrap; }
+        .account-greeting span { color: var(--text-muted); font-size: 12px; }
+        .account-greeting strong { color: var(--text-main); font-size: 14px; }
+        .account-chevron { width: 14px; height: 14px; color: #777; transition: transform .2s; }
+        .account-dropdown[open] .account-chevron { transform: rotate(180deg); }
 
-        .public-nav form {
-            margin: 0;
+        .account-menu {
+            position: absolute;
+            top: calc(100% + 14px);
+            right: 0;
+            width: 290px;
+            padding: 18px;
+            border: 1px solid #eeeae3;
+            border-radius: 10px;
+            background: #fff;
+            box-shadow: 0 12px 35px rgb(0 0 0 / 14%);
+            z-index: 50;
         }
-
-        /* RESPONSIF */
-
-        /* UKURAN LOGO DI HP */
-        @media (max-width: 550px) {
-            .public-header .public-logo-image {
-                width: 150px;
-            }
+        .account-menu::before {
+            content: "";
+            position: absolute;
+            top: -7px;
+            right: 22px;
+            width: 13px;
+            height: 13px;
+            transform: rotate(45deg);
+            border-top: 1px solid #eeeae3;
+            border-left: 1px solid #eeeae3;
+            background: #fff;
         }
+        .account-menu-header { display: flex; align-items: center; gap: 12px; padding: 2px 2px 16px; }
+        .account-menu-header .account-avatar { width: 52px; height: 52px; flex-basis: 52px; }
+        .account-menu-header strong { display: block; font-size: 16px; }
+        .account-menu-header small { color: var(--text-muted); font-size: 12px; }
+        .account-menu-divider { height: 1px; margin: 0 0 10px; background: #e8e5df; }
+        .account-menu a, .account-menu button {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            width: 100%;
+            min-height: 48px;
+            padding: 9px 7px;
+            border: 0;
+            border-radius: 7px;
+            background: transparent;
+            color: #454540;
+            font: inherit;
+            font-size: 14px;
+            text-align: left;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .account-menu a:hover, .account-menu button:hover { background: #f5f2ec; color: #080808; }
+        .account-menu .menu-icon { display: inline-flex; align-items: center; justify-content: center; width: 34px; height: 34px; flex: 0 0 34px; border-radius: 50%; background: #f0efeb; color: #555; }
+        .account-menu .menu-icon svg { width: 17px; height: 17px; }
+        .account-menu .menu-arrow { margin-left: auto; color: #777; font-size: 20px; }
+        .account-menu .logout-item { color: #c93636; }
+        .account-menu .logout-item:hover { background: #fff0f0; color: #b42323; }
+        .account-menu form { margin: 0; }
+        .public-nav .register-link, .public-nav .login-link { padding: 9px 13px; border-radius: 7px; text-decoration: none; white-space: nowrap; }
+        .public-nav .register-link { border: 1px solid #d5d0c7; background: #fbf9f5; color: #333; }
+        .public-nav .login-link { background: var(--accent); color: #fff; }
 
         @media (max-width: 900px) {
-            .public-header {
-                gap: 15px;
-                padding: 10px 3%;
-            }
-
-            .public-header .public-logo-image {
-                width: 100px;
-            }
-
-            .public-nav {
-                gap: 12px;
-            }
+            .public-header { gap: 16px; padding: 10px 3%; }
+            .public-header .public-logo-image { width: 100px; }
+            .public-nav { gap: 14px; }
         }
-
         @media (max-width: 650px) {
-            .public-header {
-                flex-wrap: wrap;
-                gap: 12px;
-                padding: 12px 15px;
-            }
-
-            .public-header .public-logo-image {
-                width: 100px;
-            }
-
-            .header-search {
-                order: 3;
-                flex: 1 0 100%;
-                max-width: none;
-            }
-
-            .public-nav {
-                margin-left: auto;
-                gap: 12px;
-            }
-
-            .public-nav .customer-greeting {
-                max-width: 115px;
-                overflow-wrap: anywhere;
-                white-space: normal;
-            }
-        }
-
-        @media (max-width: 380px) {
-            .public-header {
-                padding: 10px;
-            }
-
-            .public-nav {
-                gap: 9px;
-            }
-
-            .public-nav .cart-label {
-                display: none;
-            }
-
-            .public-nav .register-link,
-            .public-nav .login-link {
-                padding: 8px 10px;
-            }
+            .public-header { flex-wrap: wrap; gap: 12px; padding: 12px 15px; }
+            .header-search { order: 3; flex: 1 0 100%; max-width: none; }
+            .public-nav { margin-left: auto; gap: 13px; }
+            .account-greeting { display: none; }
+            .account-menu { right: 0; width: min(290px, calc(100vw - 30px)); }
         }
 
         /* AREA UTAMA */
@@ -1062,81 +1051,93 @@
     <header class="public-header">
         {{-- Logo toko --}}
         <a href="/" class="public-logo" aria-label="KOTOKO">
-            <img
-                src="{{ asset('images/KOTOKO black text1.png') }}"
-                alt="KOTOKO"
-                class="public-logo-image"
-            >
+            <img src="{{ asset('images/KOTOKO black text1.png') }}" alt="KOTOKO" class="public-logo-image">
         </a>
 
-        {{-- Pencarian produk --}}
+        {{-- Search bar --}}
         <form action="{{ url('/produk') }}" method="GET" class="header-search">
-            <input
-                type="text"
-                name="search"
-                value="{{ request('search') }}"
-                placeholder="Cari produk..."
-                aria-label="Cari produk"
-            >
-
-            {{-- Pertahankan filter ketika melakukan pencarian --}}
+            <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari produk..." aria-label="Cari produk">
             @foreach (['sort_by', 'category_id', 'min_price', 'max_price'] as $filter)
                 @if (request()->filled($filter))
                     <input type="hidden" name="{{ $filter }}" value="{{ request($filter) }}">
                 @endif
             @endforeach
-
             <button type="submit" aria-label="Cari produk">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    aria-hidden="true"
-                >
-                    <circle cx="11" cy="11" r="7"></circle>
-                    <path d="m20 20-4-4"></path>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path>
                 </svg>
             </button>
         </form>
 
-        {{-- Keranjang dan akun --}}
         <nav class="public-nav" aria-label="Menu akun">
             @auth
-                <a href="{{ url('/keranjang') }}" class="cart-link" aria-label="Keranjang">
-                    <svg xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.8"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        aria-hidden="true">
-                        <circle cx="9" cy="21" r="1"></circle>
-                        <circle cx="20" cy="21" r="1"></circle>
+                {{-- Keranjang --}}
+                <a href="{{ url('/keranjang') }}" class="cart-link" aria-label="Keranjang" title="Keranjang">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
                         <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
                     </svg>
                 </a>
-            @endauth
 
-            @auth
-                @if (auth()->user()->is_admin)
-                    <a href="/admin/dashboard">Dashboard Admin</a>
-                @endif
+                {{-- Profil dan dropdown --}}
+                <details class="account-dropdown">
+                    <summary aria-label="Buka menu profil">
+                        <span class="account-avatar">
+                            @if (!empty(auth()->user()->avatar))
+                                <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="Foto profil {{ auth()->user()->name }}">
+                            @else
+                                {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                            @endif
+                        </span>
+                        <span class="account-greeting">
+                            <span>Hello,</span>
+                            <strong>{{ auth()->user()->name }}</strong>
+                        </span>
+                        <svg class="account-chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
+                    </summary>
 
-                <span class="customer-greeting">
-                    Hello, <strong>{{ auth()->user()->name }}</strong>
-                </span>
+                    <div class="account-menu">
+                        <div class="account-menu-header">
+                            <span class="account-avatar">
+                                @if (!empty(auth()->user()->avatar))
+                                    <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="Foto profil {{ auth()->user()->name }}">
+                                @else
+                                    {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
+                                @endif
+                            </span>
+                            <div>
+                                <strong>{{ auth()->user()->name }}</strong>
+                                <small>{{ auth()->user()->email }}</small>
+                            </div>
+                        </div>
+                        <div class="account-menu-divider"></div>
 
-                <form action="{{ url('/logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="logout-button">Logout</button>
-                </form>
+                        @if (auth()->user()->is_admin)
+                            <a href="{{ url('/admin/dashboard') }}">
+                                <span class="menu-icon">⚙</span> Dashboard Admin <span class="menu-arrow">›</span>
+                            </a>
+                        @endif
+                        <a href="{{ url('/profile') }}">
+                            <span class="menu-icon">♙</span> Edit Profile <span class="menu-arrow">›</span>
+                        </a>
+                        <a href="{{ url('/pesanan') }}">
+                            <span class="menu-icon">▤</span> Pesanan <span class="menu-arrow">›</span>
+                        </a>
+                        <a href="{{ url('/settings') }}">
+                            <span class="menu-icon">⚙</span> Settings &amp; Privacy <span class="menu-arrow">›</span>
+                        </a>
+                        <a href="{{ url('/help') }}">
+                            <span class="menu-icon">?</span> Help &amp; Support <span class="menu-arrow">›</span>
+                        </a>
+                        <div class="account-menu-divider"></div>
+                        <form action="{{ url('/logout') }}" method="POST">
+                            @csrf
+                            <button type="submit" class="logout-item">
+                                <span class="menu-icon">↪</span> Logout <span class="menu-arrow">›</span>
+                            </button>
+                        </form>
+                    </div>
+                </details>
             @else
                 <a href="{{ route('register') }}" class="register-link">Daftar</a>
                 <a href="{{ route('login') }}" class="login-link">Login</a>
