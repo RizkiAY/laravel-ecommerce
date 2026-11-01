@@ -367,6 +367,88 @@
             padding-left: 20px;
         }
 
+        /* Layout card rekening dan alamat */
+        .profile-data-layout {
+            display: grid;
+            grid-template-columns: 75px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+        }
+
+        /* Tombol aksi di sebelah kiri card */
+        .profile-data-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            padding-top: 2px;
+        }
+
+        .profile-data-actions button {
+            border: none;
+            background: transparent;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .profile-data-actions .edit-action {
+            color: #2563eb;
+        }
+
+        .profile-data-actions .delete-action {
+            color: #dc2626;
+        }
+
+        .profile-data-actions button:hover {
+            opacity: 0.75;
+        }
+
+        .profile-card-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .profile-card-actions form {
+            margin: 0;
+        }
+
+        .profile-card-actions button {
+            border: none;
+            background: transparent;
+            padding: 0;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .profile-card-actions .edit-action {
+            color: #2563eb;
+        }
+
+        .profile-card-actions .delete-action {
+            color: #dc2626;
+        }
+
+        .profile-card-actions button:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 650px) {
+            .profile-data-layout {
+                grid-template-columns: 65px minmax(0, 1fr);
+                gap: 12px;
+            }
+
+            .profile-data-actions button {
+                font-size: 13px;
+            }
+        }
+
         @media (max-width: 650px) {
             .profile-detail-card {
                 padding: 17px 15px;
@@ -642,6 +724,7 @@
                     </div>
                 </div>
 
+
             @elseif ($activeTab === 'bank')
 
                 <div class="profile-info-header">
@@ -651,13 +734,12 @@
 
                 <div class="profile-section">
                     <div class="profile-section-heading">
-                        <h3 class="profile-section-title">Informasi Rekening Bank</h3>
+                        <h3 class="profile-section-title">Informasi Rekening</h3>
 
                         <button
                             type="button"
                             class="profile-add-button"
-                            data-modal-open="addBankModal"
-                        >
+                            data-modal-open="addBankModal">
                             + Tambah Rekening
                         </button>
                     </div>
@@ -665,8 +747,31 @@
                     @forelse ($bankAccounts as $bank)
 
                         <div class="profile-detail-card" style="margin-bottom: 14px;">
-                            <div class="profile-detail-list">
 
+                            {{-- Tombol aksi di kanan atas --}}
+                            <div class="profile-card-actions">
+                                <button
+                                    type="button"
+                                    class="edit-action"
+                                    data-modal-open="editBank{{ $bank->id }}">
+                                    Ubah
+                                </button>
+
+                                <form
+                                    action="{{ route('profile.bank.destroy', $bank->id) }}"
+                                    method="POST"
+                                    onsubmit="return confirm('Apakah kamu yakin ingin menghapus rekening ini?')">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button type="submit" class="delete-action">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </div>
+
+                            {{-- Informasi rekening --}}
+                            <div class="profile-detail-list">
                                 <div class="profile-detail">
                                     <span>Nama Rekening</span>
                                     <strong>: {{ $bank->bank_name }}</strong>
@@ -681,22 +786,11 @@
                                     <span>Nomor Rekening</span>
                                     <strong>: {{ $bank->account_number }}</strong>
                                 </div>
-
                             </div>
 
-                            <div style="display:flex; justify-content:flex-end; margin-top:14px;">
-                                <button
-                                    type="button"
-                                    class="profile-edit-button"
-                                    data-modal-open="editBank{{ $bank->id }}"
-                                >
-                                    Ubah
-                                </button>
-                            </div>
                         </div>
 
-                        {{-- Pertahankan modal Edit Rekening yang sudah ada di sini --}}
-
+                        {{-- Modal Edit Rekening --}}
                         <div class="profile-modal" id="editBank{{ $bank->id }}">
                             <div class="profile-modal-content">
                                 <div class="profile-modal-header">
@@ -732,10 +826,12 @@
                         </div>
 
                     @empty
+
                         <div class="empty-state">
                             <strong>Belum ada rekening bank tersimpan</strong>
                             Tambahkan rekening bank untuk menyimpan informasi pembayaran kamu.
                         </div>
+
                     @endforelse
                 </div>
 

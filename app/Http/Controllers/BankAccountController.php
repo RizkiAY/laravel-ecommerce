@@ -40,4 +40,16 @@ class BankAccountController extends Controller
         return redirect('/profile?tab=bank')
             ->with('success', 'Rekening bank berhasil diperbarui.');
     }
+
+    public function destroy($id)
+    {
+        $bank = \App\Models\BankAccount::where('user_id', auth()->id())
+            ->findOrFail($id);
+
+        $bank->delete();
+
+        return redirect()
+            ->route('profile', ['tab' => 'bank'])
+            ->with('success', 'Rekening berhasil dihapus.');
+    }
 }

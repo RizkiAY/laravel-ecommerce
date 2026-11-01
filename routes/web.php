@@ -54,6 +54,9 @@ Route::middleware('auth')->group(function () {
     Route::put('/profile/bank/{id}', [BankAccountController::class, 'update'])
         ->name('profile.bank.update');
 
+    Route::delete('/profile/bank/{id}', [BankAccountController::class, 'destroy'])
+        ->name('profile.bank.destroy');
+
     // Alamat
     Route::post('/profile/address', [AddressController::class, 'store'])
         ->name('profile.address.store');
