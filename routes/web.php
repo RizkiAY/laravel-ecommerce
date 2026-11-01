@@ -8,6 +8,10 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BankAccountController;
+use App\Http\Controllers\AddressController;
+use App\Models\BankAccount;
+use App\Models\Address;
 
 Route::get('/', [ProductController::class, 'index'])
     ->name('home');
@@ -42,6 +46,20 @@ Route::middleware('auth')->group(function () {
 
     Route::put('/profile', [ProfileController::class, 'update'])
         ->name('profile.update');
+
+    // Rekening bank
+    Route::post('/profile/bank', [BankAccountController::class, 'store'])
+        ->name('profile.bank.store');
+
+    Route::put('/profile/bank/{id}', [BankAccountController::class, 'update'])
+        ->name('profile.bank.update');
+
+    // Alamat
+    Route::post('/profile/address', [AddressController::class, 'store'])
+        ->name('profile.address.store');
+
+    Route::put('/profile/address/{id}', [AddressController::class, 'update'])
+        ->name('profile.address.update');
 
     Route::get('/keranjang', [CartController::class, 'index'])
         ->name('cart.index');

@@ -22,41 +22,6 @@
         body { margin: 0; font-family: Arial, sans-serif; background: var(--bg-main); color: var(--text-main); line-height: 1.5; }
         a { color: inherit; }
 
-        /* Header mengikuti halaman katalog KOTOKO */
-        .public-header { display:flex; align-items:center; gap:32px; padding:8px 4%; background:var(--bg-header); border-bottom:1px solid var(--border); box-shadow:0 4px 18px rgb(0 0 0 / 5%); }
-        .public-logo { display:inline-flex; align-items:center; flex:0 0 auto; text-decoration:none; }
-        .public-logo img { display:block; width:120px; max-width:100%; height:auto; object-fit:contain; }
-        .header-search { display:flex; flex:1 1 auto; min-width:100px; max-width:750px; margin-left:12px; }
-        .header-search input { width:100%; min-width:0; padding:12px 14px; border:1px solid #d5d0c7; border-right:0; border-radius:8px 0 0 8px; background:#fff; color:var(--text-main); font:14px Arial,sans-serif; }
-        .header-search input:focus { outline:2px solid var(--accent); outline-offset:-2px; }
-        .header-search button { flex:0 0 46px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--accent); border-radius:0 8px 8px 0; background:var(--accent); color:#fff; cursor:pointer; }
-        .header-right { display:flex; align-items:center; gap:20px; margin-left:auto; }
-        .cart-link { display:inline-flex; align-items:center; color:var(--text-main); text-decoration:none; }
-        .cart-link svg { width:23px; height:23px; }
-        .account-wrap { position:relative; }
-        .account-trigger { display:flex; align-items:center; gap:10px; padding:5px 8px; border:0; border-radius:9px; background:transparent; color:var(--text-main); text-align:left; cursor:pointer; }
-        .account-trigger:hover, .account-trigger[aria-expanded="true"] { background:var(--bg-hover); }
-        .account-avatar { width:42px; height:42px; flex:0 0 42px; display:flex; align-items:center; justify-content:center; overflow:hidden; border-radius:50%; background:#e7e3dc; color:#555; font-weight:700; }
-        .account-avatar img { width:100%; height:100%; object-fit:cover; }
-        .greeting { display:block; color:var(--text-muted); font-size:12px; line-height:1.3; }
-        .account-name { display:block; max-width:150px; overflow:hidden; color:var(--text-main); font-size:14px; font-weight:700; text-overflow:ellipsis; white-space:nowrap; }
-        .chevron { width:14px; height:14px; transition:transform .2s; }
-        .account-trigger[aria-expanded="true"] .chevron { transform:rotate(180deg); }
-        .account-dropdown { position:absolute; z-index:20; top:calc(100% + 12px); right:0; width:290px; padding:18px; border:1px solid var(--border); border-radius:12px; background:#fff; box-shadow:0 12px 35px rgb(0 0 0 / 13%); display:none; }
-        .account-dropdown.open { display:block; }
-        .dropdown-user { display:flex; align-items:center; gap:12px; padding-bottom:15px; border-bottom:1px solid var(--border); }
-        .dropdown-user strong { font-size:16px; }
-        .dropdown-link { display:flex; align-items:center; gap:12px; padding:11px 4px; border-bottom:1px solid #f0eee9; color:#444; font-size:14px; text-decoration:none; }
-        .dropdown-link:last-of-type { border-bottom:0; }
-        .dropdown-link:hover { color:#000; background:#faf8f3; }
-        .dropdown-icon { width:32px; height:32px; display:flex; align-items:center; justify-content:center; border-radius:50%; background:#f0eee9; font-size:15px; }
-        .dropdown-arrow { margin-left:auto; font-size:20px; }
-        .logout-form { margin-top:8px; padding-top:8px; border-top:1px solid var(--border); }
-        .logout-button { width:100%; display:flex; align-items:center; gap:12px; padding:10px 4px; border:0; background:transparent; color:#b52b2b; font:14px Arial,sans-serif; text-align:left; cursor:pointer; }
-        .guest-links { display:flex; gap:10px; align-items:center; }
-        .guest-links a { padding:9px 13px; border-radius:7px; text-decoration:none; font-size:13px; }
-        .guest-links a:last-child { background:var(--accent); color:#fff; }
-
         /* Layout halaman akun */
         .account-page { max-width:1200px; margin:34px auto 60px; padding:0 22px; }
         .page-heading { margin-bottom:22px; }
@@ -291,6 +256,117 @@
             background: #1d4ed8;
         }
 
+        .account-tab-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 22px;
+        }
+
+        .account-tab-header .content-description {
+            margin-bottom: 0;
+        }
+
+        .profile-add-button {
+            flex-shrink: 0;
+            padding: 10px 14px;
+            border: 1px solid #080808;
+            border-radius: 7px;
+            background: #080808;
+            color: #fff;
+            font-family: inherit;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background .2s ease, border-color .2s ease;
+        }
+
+        .profile-add-button:hover {
+            border-color: #333;
+            background: #333;
+        }
+
+        .account-item-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .account-item-heading > div {
+            min-width: 0;
+            overflow-wrap: anywhere;
+        }
+
+        .account-item-heading .profile-edit-button {
+            flex-shrink: 0;
+        }
+
+        .profile-form-group textarea {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 11px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+            background: #fff;
+            color: #1e293b;
+            font-family: inherit;
+            font-size: 14px;
+            resize: vertical;
+            outline: none;
+        }
+
+        .profile-form-group textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, .12);
+        }
+
+        @media (max-width: 650px) {
+            .account-tab-header {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .account-tab-header .profile-add-button {
+                align-self: flex-start;
+            }
+
+            .account-item-heading {
+                gap: 8px;
+            }
+
+            .profile-modal-content {
+                max-height: 90vh;
+                overflow-y: auto;
+                padding: 20px;
+            }
+        }
+
+        .profile-alert {
+            margin-bottom: 20px;
+            padding: 12px 15px;
+            border-radius: 8px;
+            font-size: 13px;
+        }
+
+        .profile-alert-success {
+            border: 1px solid #bbf7d0;
+            background: #f0fdf4;
+            color: #166534;
+        }
+
+        .profile-alert-error {
+            border: 1px solid #fecaca;
+            background: #fef2f2;
+            color: #991b1b;
+        }
+
+        .profile-alert ul {
+            margin: 7px 0 0;
+            padding-left: 20px;
+        }
+
         @media (max-width: 650px) {
             .profile-detail-card {
                 padding: 17px 15px;
@@ -344,52 +420,6 @@
     </style>
 </head>
 <body>
-<header class="public-header">
-    <a href="{{ url('/') }}" class="public-logo" aria-label="KOTOKO">
-        <img src="{{ asset('images/KOTOKO black text1.png') }}" alt="KOTOKO">
-    </a>
-    <form action="{{ url('/produk') }}" method="GET" class="header-search">
-        <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari produk..." aria-label="Cari produk">
-        <button type="submit" aria-label="Cari produk">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-4-4"></path></svg>
-        </button>
-    </form>
-    <div class="header-right">
-        @auth
-            <a href="{{ url('/keranjang') }}" class="cart-link" aria-label="Keranjang">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
-            </a>
-            <div class="account-wrap">
-                <button type="button" class="account-trigger" id="accountTrigger" aria-expanded="false" aria-controls="accountDropdown">
-                    <span class="account-avatar">
-                        @if (!empty(auth()->user()->avatar))
-                            <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="Foto profil">
-                        @else
-                            {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
-                        @endif
-                    </span>
-                    <span><span class="greeting">Hello,</span><span class="account-name">{{ auth()->user()->name }}</span></span>
-                    <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"></path></svg>
-                </button>
-                <div class="account-dropdown" id="accountDropdown">
-                    <div class="dropdown-user">
-                        <span class="account-avatar">
-                            @if (!empty(auth()->user()->avatar)) <img src="{{ asset('storage/' . auth()->user()->avatar) }}" alt="Foto profil"> @else {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }} @endif
-                        </span>
-                        <strong>{{ auth()->user()->name }}</strong>
-                    </div>
-                    <a class="dropdown-link" href="{{ url('/profile?tab=profile') }}"><span class="dropdown-icon">♙</span>Edit Profile<span class="dropdown-arrow">›</span></a>
-                    <a class="dropdown-link" href="{{ url('/pesanan') }}"><span class="dropdown-icon">▤</span>Pesanan<span class="dropdown-arrow">›</span></a>
-                    <a class="dropdown-link" href="{{ url('/profile?tab=bank') }}"><span class="dropdown-icon">⚙</span>Rekening Bank<span class="dropdown-arrow">›</span></a>
-                    <a class="dropdown-link" href="{{ url('/profile?tab=address') }}"><span class="dropdown-icon">⌖</span>Alamat<span class="dropdown-arrow">›</span></a>
-                    <form class="logout-form" action="{{ url('/logout') }}" method="POST">@csrf<button class="logout-button" type="submit"><span class="dropdown-icon">⇥</span>Logout</button></form>
-                </div>
-            </div>
-        @else
-            <div class="guest-links"><a href="{{ route('register') }}">Daftar</a><a href="{{ route('login') }}">Login</a></div>
-        @endauth
-    </div>
-</header>
 
 <main class="account-page">
     <div class="page-heading">
@@ -428,6 +458,22 @@
         </aside>
 
         <section class="content-card">
+            @if (session('success'))
+                <div class="profile-alert profile-alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div class="profile-alert profile-alert-error">
+                    <strong>Periksa kembali data yang kamu masukkan:</strong>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
             @if ($activeTab === 'profile')
 
                 {{-- Judul Profil --}}
@@ -597,21 +643,311 @@
                 </div>
 
             @elseif ($activeTab === 'bank')
-                <h2 class="content-heading">Rekening Bank</h2>
-                <p class="content-description">Daftar rekening bank yang tersimpan pada akun kamu.</p>
-                @forelse ($bankAccounts as $bank)
-                    <div class="bank-card"><h3 class="item-title">{{ $bank->bank_name ?? 'Rekening Bank' }}</h3><div class="muted">{{ $bank->account_name ?? '' }}</div><strong>{{ $bank->account_number ?? '' }}</strong></div>
-                @empty
-                    <div class="empty-state"><strong>Belum ada rekening bank tersimpan</strong>Rekening bank yang kamu simpan akan ditampilkan di sini.</div>
-                @endforelse
+
+                <div class="profile-info-header">
+                    <h2>Kelola Rekening Bank</h2>
+                    <p>Informasi rekening bank yang terhubung dengan akun kamu.</p>
+                </div>
+
+                <div class="profile-section">
+                    <div class="profile-section-heading">
+                        <h3 class="profile-section-title">Informasi Rekening Bank</h3>
+
+                        <button
+                            type="button"
+                            class="profile-add-button"
+                            data-modal-open="addBankModal"
+                        >
+                            + Tambah Rekening
+                        </button>
+                    </div>
+
+                    @forelse ($bankAccounts as $bank)
+
+                        <div class="profile-detail-card" style="margin-bottom: 14px;">
+                            <div class="profile-detail-list">
+
+                                <div class="profile-detail">
+                                    <span>Nama Rekening</span>
+                                    <strong>: {{ $bank->bank_name }}</strong>
+                                </div>
+
+                                <div class="profile-detail">
+                                    <span>Nama Pemilik Rekening</span>
+                                    <strong>: {{ $bank->account_name }}</strong>
+                                </div>
+
+                                <div class="profile-detail">
+                                    <span>Nomor Rekening</span>
+                                    <strong>: {{ $bank->account_number }}</strong>
+                                </div>
+
+                            </div>
+
+                            <div style="display:flex; justify-content:flex-end; margin-top:14px;">
+                                <button
+                                    type="button"
+                                    class="profile-edit-button"
+                                    data-modal-open="editBank{{ $bank->id }}"
+                                >
+                                    Ubah
+                                </button>
+                            </div>
+                        </div>
+
+                        {{-- Pertahankan modal Edit Rekening yang sudah ada di sini --}}
+
+                        <div class="profile-modal" id="editBank{{ $bank->id }}">
+                            <div class="profile-modal-content">
+                                <div class="profile-modal-header">
+                                    <h3>Ubah Rekening Bank</h3>
+                                    <button type="button" class="profile-modal-close" data-modal-close>&times;</button>
+                                </div>
+
+                                <form action="{{ route('profile.bank.update', $bank->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <div class="profile-form-group">
+                                        <label>Nama Rekening</label>
+                                        <input type="text" name="bank_name" value="{{ $bank->bank_name }}" required>
+                                    </div>
+
+                                    <div class="profile-form-group">
+                                        <label>Nama Pemilik Rekening</label>
+                                        <input type="text" name="account_name" value="{{ $bank->account_name }}" required>
+                                    </div>
+
+                                    <div class="profile-form-group">
+                                        <label>Nomor Rekening</label>
+                                        <input type="text" name="account_number" value="{{ $bank->account_number }}" required>
+                                    </div>
+
+                                    <div class="profile-modal-actions">
+                                        <button type="button" class="profile-cancel-button" data-modal-close>Batal</button>
+                                        <button type="submit" class="profile-save-button">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    @empty
+                        <div class="empty-state">
+                            <strong>Belum ada rekening bank tersimpan</strong>
+                            Tambahkan rekening bank untuk menyimpan informasi pembayaran kamu.
+                        </div>
+                    @endforelse
+                </div>
+
+                {{-- Modal Tambah Rekening --}}
+                <div class="profile-modal" id="addBankModal">
+                    <div class="profile-modal-content">
+                        <div class="profile-modal-header">
+                            <h3>Tambah Rekening Bank</h3>
+                            <button type="button" class="profile-modal-close" data-modal-close>&times;</button>
+                        </div>
+
+                        <form action="{{ route('profile.bank.store') }}" method="POST">
+                            @csrf
+
+                            <div class="profile-form-group">
+                                <label>Nama Rekening</label>
+                                <input type="text" name="bank_name" placeholder="Contoh: BCA" required>
+                            </div>
+
+                            <div class="profile-form-group">
+                                <label>Nama Pemilik Rekening</label>
+                                <input type="text" name="account_name" placeholder="Contoh: John" required>
+                            </div>
+
+                            <div class="profile-form-group">
+                                <label>Nomor Rekening</label>
+                                <input type="text" name="account_number" placeholder="Masukkan nomor rekening" required>
+                            </div>
+
+                            <div class="profile-modal-actions">
+                                <button type="button" class="profile-cancel-button" data-modal-close>Batal</button>
+                                <button type="submit" class="profile-save-button">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             @elseif ($activeTab === 'address')
-                <h2 class="content-heading">Alamat Saya</h2>
-                <p class="content-description">Daftar alamat pengiriman yang tersimpan pada akun kamu.</p>
-                @forelse ($addresses as $address)
-                    <div class="address-card"><h3 class="item-title">{{ $address->label ?? 'Alamat' }}</h3><strong>{{ $address->recipient_name ?? $user->name }}</strong><div class="muted">{{ $address->phone ?? '' }}</div><p class="muted">{{ $address->address ?? '' }} {{ $address->city ?? '' }} {{ $address->postal_code ?? '' }}</p></div>
-                @empty
-                    <div class="empty-state"><strong>Belum ada alamat tersimpan</strong>Alamat pengiriman yang kamu simpan akan ditampilkan di sini.</div>
-                @endforelse
+
+                <div class="profile-info-header">
+                    <h2>Kelola Alamat</h2>
+                    <p>Informasi alamat yang terhubung dengan akun kamu.</p>
+                </div>
+
+                <div class="profile-section">
+                    <div class="profile-section-heading">
+                        <h3 class="profile-section-title">Informasi Alamat</h3>
+
+                        <button
+                            type="button"
+                            class="profile-add-button"
+                            data-modal-open="addAddressModal"
+                        >
+                            + Tambah Alamat
+                        </button>
+                    </div>
+
+                    @forelse ($addresses as $address)
+
+                        <div class="profile-detail-card" style="margin-bottom: 14px;">
+                            <div class="profile-detail-list">
+
+                                <div class="profile-detail">
+                                    <span>Label Alamat</span>
+                                    <strong>: {{ $address->label }}</strong>
+                                </div>
+
+                                <div class="profile-detail">
+                                    <span>Nama Penerima</span>
+                                    <strong>: {{ $address->recipient_name }}</strong>
+                                </div>
+
+                                <div class="profile-detail">
+                                    <span>Nomor HP</span>
+                                    <strong>: {{ $address->phone }}</strong>
+                                </div>
+
+                                <div class="profile-detail">
+                                    <span>Alamat Lengkap</span>
+                                    <strong>: {{ $address->address }}</strong>
+                                </div>
+
+                                <div class="profile-detail">
+                                    <span>Kota</span>
+                                    <strong>: {{ $address->city }}</strong>
+                                </div>
+
+                                <div class="profile-detail">
+                                    <span>Kode Pos</span>
+                                    <strong>: {{ $address->postal_code }}</strong>
+                                </div>
+
+                            </div>
+
+                            <div style="display:flex; justify-content:flex-end; margin-top:14px;">
+                                <button
+                                    type="button"
+                                    class="profile-edit-button"
+                                    data-modal-open="editAddress{{ $address->id }}"
+                                >
+                                    Ubah
+                                </button>
+                            </div>
+                        </div>
+
+                        {{-- Modal Edit Alamat --}}
+                        <div class="profile-modal" id="editAddress{{ $address->id }}">
+                            <div class="profile-modal-content">
+                                <div class="profile-modal-header">
+                                    <h3>Ubah Alamat</h3>
+                                    <button type="button" class="profile-modal-close" data-modal-close>&times;</button>
+                                </div>
+
+                                <form action="{{ route('profile.address.update', $address->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+
+                                    <div class="profile-form-group">
+                                        <label>Label Alamat</label>
+                                        <input type="text" name="label" value="{{ $address->label }}" required>
+                                    </div>
+
+                                    <div class="profile-form-group">
+                                        <label>Nama Penerima</label>
+                                        <input type="text" name="recipient_name" value="{{ $address->recipient_name }}" required>
+                                    </div>
+
+                                    <div class="profile-form-group">
+                                        <label>Nomor HP</label>
+                                        <input type="text" name="phone" value="{{ $address->phone }}" required>
+                                    </div>
+
+                                    <div class="profile-form-group">
+                                        <label>Alamat Lengkap</label>
+                                        <textarea name="address" rows="3" required>{{ $address->address }}</textarea>
+                                    </div>
+
+                                    <div class="profile-form-group">
+                                        <label>Kota</label>
+                                        <input type="text" name="city" value="{{ $address->city }}" required>
+                                    </div>
+
+                                    <div class="profile-form-group">
+                                        <label>Kode Pos</label>
+                                        <input type="text" name="postal_code" value="{{ $address->postal_code }}" required>
+                                    </div>
+
+                                    <div class="profile-modal-actions">
+                                        <button type="button" class="profile-cancel-button" data-modal-close>Batal</button>
+                                        <button type="submit" class="profile-save-button">Simpan</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    @empty
+                        <div class="empty-state">
+                            <strong>Belum ada alamat tersimpan</strong>
+                            Tambahkan alamat pengiriman untuk memudahkan proses pemesanan.
+                        </div>
+                    @endforelse
+                </div>
+
+                {{-- Modal Tambah Alamat --}}
+                <div class="profile-modal" id="addAddressModal">
+                    <div class="profile-modal-content">
+                        <div class="profile-modal-header">
+                            <h3>Tambah Alamat</h3>
+                            <button type="button" class="profile-modal-close" data-modal-close>&times;</button>
+                        </div>
+
+                        <form action="{{ route('profile.address.store') }}" method="POST">
+                            @csrf
+
+                            <div class="profile-form-group">
+                                <label>Label Alamat</label>
+                                <input type="text" name="label" placeholder="Contoh: Rumah" required>
+                            </div>
+
+                            <div class="profile-form-group">
+                                <label>Nama Penerima</label>
+                                <input type="text" name="recipient_name" value="{{ $user->name }}" required>
+                            </div>
+
+                            <div class="profile-form-group">
+                                <label>Nomor HP</label>
+                                <input type="text" name="phone" value="{{ $user->phone }}" required>
+                            </div>
+
+                            <div class="profile-form-group">
+                                <label>Alamat Lengkap</label>
+                                <textarea name="address" rows="3" placeholder="Masukkan alamat lengkap" required></textarea>
+                            </div>
+
+                            <div class="profile-form-group">
+                                <label>Kota</label>
+                                <input type="text" name="city" placeholder="Masukkan kota" required>
+                            </div>
+
+                            <div class="profile-form-group">
+                                <label>Kode Pos</label>
+                                <input type="text" name="postal_code" placeholder="Masukkan kode pos" required>
+                            </div>
+
+                            <div class="profile-modal-actions">
+                                <button type="button" class="profile-cancel-button" data-modal-close>Batal</button>
+                                <button type="submit" class="profile-save-button">Simpan</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
             @elseif ($activeTab === 'orders')
                 <h2 class="content-heading">Daftar Pesanan</h2>
                 <p class="content-description">Lihat riwayat dan status pesanan kamu.</p>
@@ -630,7 +966,6 @@
         </section>
     </div>
 </main>
-<footer class="site-footer">&copy; {{ date('Y') }} KOTOKO. All Rights Reserved.</footer>
 
 <script>
     const accountTrigger = document.getElementById('accountTrigger');

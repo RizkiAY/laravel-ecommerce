@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
+use App\Models\Address;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -9,8 +11,16 @@ class ProfileController extends Controller
 {
     public function index()
     {
+        $user = auth()->user();
+
         return view('user.account', [
-            'user' => auth()->user(),
+            'user' => $user,
+            'bankAccounts' => BankAccount::where('user_id', $user->id)
+                ->latest()
+                ->get(),
+            'addresses' => Address::where('user_id', $user->id)
+                ->latest()
+                ->get(),
         ]);
     }
 
@@ -21,7 +31,11 @@ class ProfileController extends Controller
         $validated = $request->validate([
             'name' => ['sometimes', 'required', 'string', 'max:255'],
             'date_of_birth' => ['sometimes', 'nullable', 'date'],
-            'gender' => ['sometimes', 'nullable', Rule::in(['laki-laki', 'perempuan'])],
+            'gender' => [
+                'sometimes',
+                'nullable',
+                Rule::in(['laki-laki', 'perempuan']),
+            ],
 
             'email' => [
                 'sometimes',
